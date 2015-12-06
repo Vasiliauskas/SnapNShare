@@ -84,7 +84,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="LoggerTests.cs" />
-    <Compile Include="OverlayWindowTests.cs" />
+    <Compile Include="OverlayTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

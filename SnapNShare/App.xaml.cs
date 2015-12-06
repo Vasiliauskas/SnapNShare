@@ -9,6 +9,7 @@ using SnapNShare.Logging;
 using SnapNShare.ScreenCapture;
 using SnapNShare.Views;
 using SnapNShare.WindowsUtils;
+using SnapNShare.Overlay;
 
 namespace SnapNShare
 {
@@ -62,10 +63,11 @@ namespace SnapNShare
             }
 
             _isOverlayActive = true;
-            _overlayWindow = new OverlayWindow(new Win32ScreenCapture());
+            var overlayEngine = new OverlayEngine(new Win32ScreenCapture());
+            _overlayWindow = new OverlayWindow(overlayEngine);
             _overlayWindow.WindowState = WindowState.Maximized;
             _overlayWindow.ShowDialog();
-            var img = _overlayWindow.GetClippedImage();
+            var img = overlayEngine.GetClippedImage();
             img.IfNotNull(ExportImage);
 
             _isOverlayActive = false;

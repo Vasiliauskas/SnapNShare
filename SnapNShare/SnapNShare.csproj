@@ -93,7 +93,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Common\NullabilityExtensions.cs" />
+    <Compile Include="Extensions\NullabilityExtensions.cs" />
+    <Compile Include="Extensions\GeometryExtensions.cs" />
     <Compile Include="ImageOutput\ClipboardTarget.cs" />
     <Compile Include="ImageOutput\FileTarget.cs" />
     <Compile Include="ImageOutput\ImagePathProvider.cs" />
@@ -106,10 +107,11 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Overlay\OverlayEngine.cs" />
     <Compile Include="ScreenCapture\IScreenCapture.cs" />
     <Compile Include="ScreenCapture\Win32ScreenCapture.cs" />
-    <Compile Include="Views\ClippingRectangle.cs" />
-    <Compile Include="Views\OverlayWindow.xaml.cs">
+    <Compile Include="Overlay\ClippingRectangle.cs" />
+    <Compile Include="Overlay\OverlayWindow.xaml.cs">
       <DependentUpon>OverlayWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TargetPicker.xaml.cs">
@@ -157,7 +159,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\OverlayWindow.xaml">
+    <Page Include="Overlay\OverlayWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

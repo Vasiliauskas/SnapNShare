@@ -1,16 +1,12 @@
-﻿using SnapNShare.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TestingInfrastructure.STA;
+﻿using TestingInfrastructure.STA;
 using System.Windows;
 using Xunit;
+using SnapNShare.Overlay;
+using System;
 
 namespace SnapNShare.IntegrationTests
 {
-    public class OverlayWindowTests
+    public class OverlayTests
     {
         [STAFact]
         public void OverlayWindowStretchesOnFullDesktop()
@@ -25,14 +21,25 @@ namespace SnapNShare.IntegrationTests
         }
 
         [STAFact]
+        public void OverlayWindowIsCloseByEngine()
+        {
+            var sut = new OverlayEngine(null);
+            var overlayWindow = new OverlayWindow(sut);
+            overlayWindow.Show();
+            sut.Dispose();
+
+            Assert.False(overlayWindow.IsVisible);
+        }
+
+        [STAFact]
         public void OverlayWindowImageIsNullWithoutCapture()
         {
-            using (var sut = new OverlayWindow(null))
+            using (var sut = new OverlayEngine(null))
+            using (var overlayWindow = new OverlayWindow(sut))
             {
-                sut.Show();
+                overlayWindow.Show();
                 var result = sut.GetClippedImage();
                 Assert.Null(result);
-                sut.Close();
             }
         }
     }

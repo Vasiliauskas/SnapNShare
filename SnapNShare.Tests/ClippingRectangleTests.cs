@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
-using SnapNShare.Views;
 using TestingInfrastructure.STA;
 using Xunit;
+using SnapNShare.Overlay;
 
 namespace SnapNShare.Tests
 {
