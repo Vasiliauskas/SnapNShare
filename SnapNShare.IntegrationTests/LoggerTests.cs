@@ -9,6 +9,6 @@ namespace SnapNShare.IntegrationTests
 {
     public class LoggerTests
     {
-       
+       // test composite logger
     }
 }

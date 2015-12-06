@@ -17,7 +17,7 @@ namespace SnapNShare.Views
     /// <summary>
     /// Interaction logic for OverlayWindow.xaml
     /// </summary>
-    public partial class OverlayWindow : Window
+    public partial class OverlayWindow : Window, IDisposable
     {
         private double _initialX;
         private double _initialY;
@@ -181,6 +181,11 @@ namespace SnapNShare.Views
             var point = new System.Drawing.Point((int)x, (int)y);
 
             _bitmap = _screenCapture.GetScreen(size, point);
+        }
+
+        public void Dispose()
+        {
+            Close();
         }
     }
 }

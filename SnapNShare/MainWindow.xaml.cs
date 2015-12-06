@@ -27,7 +27,7 @@ namespace SnapNShare
 
         public void Dispose()
         {
-            Hide();
+            Close();
         }
     }
 }

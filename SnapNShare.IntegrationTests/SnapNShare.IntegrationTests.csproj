@@ -54,7 +54,13 @@
       <HintPath>..\packages\AutoFixture.Xunit2.3.30.8\lib\net45\Ploeh.AutoFixture.Xunit2.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
       <Private>True</Private>
@@ -78,6 +84,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="LoggerTests.cs" />
+    <Compile Include="OverlayWindowTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
