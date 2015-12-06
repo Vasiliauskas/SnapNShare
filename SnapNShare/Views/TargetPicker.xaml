@@ -1,0 +1,108 @@
+﻿<Window x:Class="SnapNShare.Views.TargetPicker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TargetPicker" 
+        WindowStyle="None"
+        AllowsTransparency="True"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        ShowInTaskbar="False"
+        Width="288"
+        Height="260"
+        RenderTransformOrigin="0.5,0.5"
+        Background="Transparent"
+        >
+    <Window.Resources>
+        <Style x:Key="sourceBtn" TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="Foreground" Value="#555555"/>
+            <Setter Property="Background" Value="#3300FF2F"/>
+        </Style>
+
+        <Style x:Key="ImageForBtn" TargetType="{x:Type Image}">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="DockPanel.Dock" Value="Top"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <Window.RenderTransform>
+        <ScaleTransform x:Name="scale"/>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard >
+                    <DoubleAnimation Storyboard.TargetName="scale" From="0.3" To="1" Duration="0:0:0.1" Storyboard.TargetProperty="ScaleX"/>
+                    <DoubleAnimation Storyboard.TargetName="scale" From="0.3" To="1" Duration="0:0:0.1" Storyboard.TargetProperty="ScaleY"/>
+                    <DoubleAnimation From="0.3" To="1" Duration="0:0:0.05" Storyboard.TargetProperty="Opacity"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Border BorderThickness="1" BorderBrush="#AAAAAA" Background="#FFFFFF" Margin="10">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Border Background="#9BBAC7" Height="30">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Foreground="White" FontSize="18" Text="Pick a source..." Margin="5"/>
+
+                    <Button Grid.Column="1" Style="{StaticResource sourceBtn}" Click="CancelClick" Background="#FF6652" Width="28" Height="28" Margin="1"
+                    HorizontalAlignment="Right" VerticalAlignment="Top">
+                        <Image Source="/Images/close.png" Style="{StaticResource ImageForBtn}" 
+                               Margin="0" Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+                </Grid>
+
+            </Border>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Height="90">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button Style="{StaticResource sourceBtn}" Click="ClipboardClick">
+                    <DockPanel>
+                        <Image Source="/Images/clipboard.png" Style="{StaticResource ImageForBtn}" />
+                        <TextBlock Text="clipboard"/>
+                    </DockPanel>
+                </Button>
+
+                <Button Style="{StaticResource sourceBtn}" Click="FileClick">
+                    <DockPanel>
+                        <Image Source="/Images/file.png" Style="{StaticResource ImageForBtn}"/>
+                        <TextBlock Text=".png"/>
+                    </DockPanel>
+                </Button>
+
+                <Button Style="{StaticResource sourceBtn}" Click="FileClick" IsEnabled="False">
+                    <DockPanel>
+                        <TextBlock Text="cloud (coming...)" TextWrapping="Wrap" TextAlignment="Center"/>
+                    </DockPanel>
+                </Button>
+
+            </StackPanel>
+
+            <Border Grid.Row="2"  Width="249" Margin="10 5 8 5" BorderThickness="1" BorderBrush="#666666" Height="100">
+                <Image  Stretch="Uniform" Source="{Binding}"/>
+            </Border>
+        </Grid>
+    </Border>
+
+</Window>
