@@ -22,12 +22,12 @@ namespace SnapNShare
         public MainWindow()
         {
             InitializeComponent();
-            this.Show();
+            Show();
         }
 
         public void Dispose()
         {
-            this.Hide();
+            Hide();
         }
     }
 }

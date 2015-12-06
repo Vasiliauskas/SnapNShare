@@ -65,7 +65,7 @@ namespace SnapNShare
             _overlayWindow = new OverlayWindow(new Win32ScreenCapture());
             _overlayWindow.WindowState = WindowState.Maximized;
             _overlayWindow.ShowDialog();
-            var img = _overlayWindow.GetImage();
+            var img = _overlayWindow.GetClippedImage();
             img.IfNotNull(ExportImage);
 
             _isOverlayActive = false;

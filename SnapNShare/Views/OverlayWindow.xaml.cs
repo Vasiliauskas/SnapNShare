@@ -33,19 +33,26 @@ namespace SnapNShare.Views
         public OverlayWindow(IScreenCapture screenCapture)
         {
             InitializeComponent();
+            Stretch();
             FocusOnLoad();
             _screenCapture = screenCapture;
         }
 
-        public System.Drawing.Bitmap GetImage()
+        public System.Drawing.Bitmap GetClippedImage()
         {
             return _bitmap;
         }
 
         private void FocusOnLoad()
         {
-            this._cnv.Focus();
-            Keyboard.Focus(this._cnv);
+            _cnv.Focus();
+            Keyboard.Focus(_cnv);
+        }
+
+        private void Stretch()
+        {
+            Width = SystemParameters.VirtualScreenWidth;
+            Height = SystemParameters.VirtualScreenHeight;
         }
 
         #region Interaction events
@@ -53,7 +60,7 @@ namespace SnapNShare.Views
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
-                this.Close();
+                Close();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -145,9 +152,9 @@ namespace SnapNShare.Views
         {
             _clippingRectangle.IfNotNull(CleanupAndSave);
 
-            this._initialX = this._initialY = 0;
-            this._isMouseDown = false;
-            this.Close();
+            _initialX = this._initialY = 0;
+            _isMouseDown = false;
+            Close();
         }
 
         private void CleanupAndSave()
